@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Bent El Geran",
+    "artist": "Hassan Shakosh",
+    "rating": 4.6,
+    "image": "images/1.jpg",
+    "audio": "audio/1.mp3",
+    "category": "Popular"
+  },
+  {
+    "id": 2,
+    "title": "Salamat",
+    "artist": "Essam Sasa",
+    "rating": 4.8,
+    "image": "images/2.jpg",
+    "audio": "audio/2.mp3",
+    "category": "Trending"
+  },
+  {
+    "id": 3,
+    "title": "Ya Habibi",
+    "artist": "Amr Diab",
+    "rating": 5.0,
+    "image": "images/3.jpg",
+    "audio": "audio/3.mp3",
+    "category": "Popular"
+  },
+  {
+    "id": 4,
+    "title": "El Donya",
+    "artist": "Hamza Namira",
+    "rating": 4.7,
+    "image": "images/4.jpg",
+    "audio": "audio/4.mp3",
+    "category": "New"
+  },
+  {
+    "id": 5,
+    "title": "Boshret Kheir",
+    "artist": "Hussein Al Jasmi",
+    "rating": 4.9,
+    "image": "images/5.jpg",
+    "audio": "audio/5.mp3",
+    "category": "Trending"
+  }
+]

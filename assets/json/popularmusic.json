@@ -1,0 +1,38 @@
+[
+  {
+    "rating": "4.5",
+    "artist" : "Essam Sasa",
+    "title"  : "ana asef o3zoreny",
+    "img" : "img/essam.jpg",
+    "audio" : "Voice1.mp3"
+  },
+  {
+    "rating": "4.9",
+    "artist" : "Eslam Kabonga",
+    "title"  : "ana mesh dilar y 7koma",
+    "img" : "img/eslam.jpg",
+    "audio" : "Voice2.mp3"
+  },
+  {
+    "rating": "4.8",
+    "artist" : "Hoda Bondok",
+    "title"  : "elmo48been",
+    "img" : "img/houda.jpg",
+    "audio" : "Voice3.mp3"
+  },
+  {
+    "rating": "5.0",
+    "artist" : "Abyusif",
+    "title"  : "Tag",
+    "img" : "img/abyusif.jpg",
+    "audio" : "Voice4.mp3"
+  },
+  {
+    "rating": "0.0",
+    "artist" : "Amr Diab",
+    "title"  : "rage3",
+    "img" : "img/amr.jpg",
+    "audio" : "Voice5.mp3"
+  }
+
+]
