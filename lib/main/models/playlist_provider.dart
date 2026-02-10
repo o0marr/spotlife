@@ -74,6 +74,14 @@ class PlaylistProvider extends ChangeNotifier {
       albumArtImagePath: "assets/img/shehab2.jpg",
       audioPath: "audio/3al3mom.mp3",
     ),
+    //song 11
+    Song(
+      songName: "One Hour Of Hamaki ",
+      artistName: "Hamaki",
+      albumArtImagePath: "assets/img/hamaki.jpg",
+      audioPath: "audio/hamaki.mp3",
+    ),
+
   ];
   int? _currentSongIndex;
 

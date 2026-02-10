@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spotlife/main/components/my_drawer.dart';
 import 'package:spotlife/main/home/My_Home_Page.dart';
+import 'package:spotlife/main/home/song_page.dart';
 import 'package:spotlife/main/models/playlist_provider.dart';
 import 'package:spotlife/main/models/song.dart';
 
@@ -26,7 +27,7 @@ class _MusicPageState extends State<MusicPage> {
     playlistProvider.currentSongIndex = songIndex;
 
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Myhomepage(),));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => SongPage(),));
   }
 
 

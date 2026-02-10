@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spotlife/main/auth/register_page.dart';
+import 'package:spotlife/main/auth/welcome_screen.dart';
 import 'package:spotlife/main/home/My_Home_Page.dart';
 import 'package:spotlife/main/home/music_page.dart';
 import 'package:spotlife/main/models/playlist_provider.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: Provider
           .of<ThemeProvider>(context)
           .themeData,
-      home: MusicPage(),
+      home: WelcomeScreen(),
     );
   }
 }

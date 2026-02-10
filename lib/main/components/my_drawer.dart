@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:spotlife/main/auth/account_edit.dart';
+import 'package:spotlife/main/auth/register_page.dart';
+import 'package:spotlife/main/auth/welcome_screen.dart';
 import 'package:spotlife/main/home/music_page.dart';
 
 import '../home/settings_page.dart';
@@ -20,6 +23,18 @@ class MyDrawer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25, top: 25),
             child: ListTile(
+              title: const Text("A C C O U N T"),
+              leading: const Icon(Icons.person),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AccountEdit(),));
+              },
+
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, top: 25),
+            child: ListTile(
               title: const Text(" H O M E "),
               leading: const Icon(Icons.home),
               onTap: () {
@@ -37,6 +52,18 @@ class MyDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage(),));
+              },
+
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, top: 25),
+            child: ListTile(
+              title: const Text("L O G O U T"),
+              leading: const Icon(Icons.exit_to_app),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomeScreen(),));
               },
 
             ),

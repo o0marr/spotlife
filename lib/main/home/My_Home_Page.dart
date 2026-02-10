@@ -19,7 +19,6 @@ class Myhomepage extends StatefulWidget {
 class _MyhomepageState extends State<Myhomepage>
     with SingleTickerProviderStateMixin {
   List<dynamic> popularmusic = [];
-  List<dynamic> music = [];
 
   late ScrollController _scrollController;
   late TabController _tabController;
@@ -29,12 +28,11 @@ class _MyhomepageState extends State<Myhomepage>
       final String response1 = await rootBundle.loadString('assets/json/popularmusic.json');
       final List data1 = json.decode(response1);
 
-      final String response2 = await rootBundle.loadString('assets/json/music.json');
-      final List data2 = json.decode(response2);
+
 
       setState(() {
         popularmusic = data1;
-        music = data2;
+
       });
     } catch (e) {
       print("Error loading JSON: $e");
@@ -157,8 +155,100 @@ class _MyhomepageState extends State<Myhomepage>
                     },
 
                     body: TabBarView(
+
                       controller: _tabController,
                       children: [
+                        ListView.builder(
+                          itemCount: popularmusic.length,
+                          itemBuilder: (context, i) {
+                            return Container(
+                              margin: const EdgeInsets.only(
+                                left: 20,
+                                right: 20,
+                                top: 10,
+                                bottom: 10,
+                              ),
+                              child: Container(
+
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+
+                                  color: Color(0xFFfdfdfd),
+                                  boxShadow: [
+                                    BoxShadow(
+
+                                      blurRadius: 2,
+                                      offset: Offset(0, 0),
+                                      color: Colors.grey.withOpacity(0.2),
+                                    ),
+                                  ],
+                                ),
+                                child:
+                                GestureDetector(
+                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MusicPage(),)),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: 80,
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10),
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                'assets/${popularmusic[i]["img"]}',
+                                              ),
+                                              fit: BoxFit.fill,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(width: 10,),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Icon(Icons.star,color: Colors.amberAccent,size: 24,),
+                                                SizedBox(width: 5,),
+                                                Text(popularmusic[i]["rating"],style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 18
+                                                ),)
+                                              ],
+                                            ),
+                                            Text(popularmusic[i]["title"],style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold
+                                            ),),
+                                            Text(popularmusic[i]["artist"],style: TextStyle(
+                                                fontSize: 14, color: Colors.grey
+                                            ),),
+                                            Container(
+                                              width: 40,
+                                              height: 15,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(10),
+                                                color: Color(0xFF00ace6),
+                                              ),
+                                              child:Text("Love",style: TextStyle(fontSize: 12,color: Colors.white),),
+                                              alignment: Alignment.center,
+                                            )
+
+
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+
+
+
+                              ),
+                            );
+                          },
+                        ),
                         ListView.builder(
                           itemCount: popularmusic.length,
                           itemBuilder: (context, i) {
@@ -183,7 +273,7 @@ class _MyhomepageState extends State<Myhomepage>
                                 ),
                                 child:
                                 GestureDetector(
-                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SongPage(),)),
+                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MusicPage(),)),
                                   child: Container(
                                     padding: const EdgeInsets.all(8),
                                     child: Row(
@@ -195,7 +285,7 @@ class _MyhomepageState extends State<Myhomepage>
                                             borderRadius: BorderRadius.circular(10),
                                             image: DecorationImage(
                                               image: AssetImage(
-                                               currentSong.albumArtImagePath,
+                                                'assets/${popularmusic[i]["img"]}',
                                               ),
                                               fit: BoxFit.fill,
                                             ),
@@ -247,6 +337,7 @@ class _MyhomepageState extends State<Myhomepage>
                             );
                           },
                         ),
+
                         ListView.builder(
                           itemCount: popularmusic.length,
                           itemBuilder: (context, i) {
@@ -269,146 +360,73 @@ class _MyhomepageState extends State<Myhomepage>
                                     ),
                                   ],
                                 ),
-                                child: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        width: 80,
-                                        height: 100,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                              'assets/${popularmusic[i]["img"]}',
+                                child:
+                                GestureDetector(
+                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MusicPage(),)),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: 80,
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10),
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                'assets/${popularmusic[i]["img"]}',
+                                              ),
+                                              fit: BoxFit.fill,
                                             ),
-                                            fit: BoxFit.fill,
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(width: 10,),
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Icon(Icons.star,color: Colors.amberAccent,size: 24,),
-                                              SizedBox(width: 5,),
-                                              Text(popularmusic[i]["rating"],style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 18
-                                              ),)
-                                            ],
-                                          ),
-                                          Text(popularmusic[i]["title"],style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold
-                                          ),),
-                                          Text(popularmusic[i]["artist"],style: TextStyle(
-                                              fontSize: 14, color: Colors.grey
-                                          ),),
-                                          Container(
-                                            width: 40,
-                                            height: 15,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(10),
-                                              color: Color(0xFF00ace6),
+                                        SizedBox(width: 10,),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Icon(Icons.star,color: Colors.amberAccent,size: 24,),
+                                                SizedBox(width: 5,),
+                                                Text(popularmusic[i]["rating"],style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 18
+                                                ),)
+                                              ],
                                             ),
-                                            child:Text("Love",style: TextStyle(fontSize: 12,color: Colors.white),),
-                                            alignment: Alignment.center,
-                                          )
+                                            Text(currentSong.songName,style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold
+                                            ),),
+                                            Text(currentSong.artistName,style: TextStyle(
+                                                fontSize: 14, color: Colors.grey
+                                            ),),
+                                            Container(
+                                              width: 40,
+                                              height: 15,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(10),
+                                                color: Color(0xFF00ace6),
+                                              ),
+                                              child:Text("Love",style: TextStyle(fontSize: 12,color: Colors.white),),
+                                              alignment: Alignment.center,
+                                            )
 
 
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                        ListView.builder(
-                          itemCount: popularmusic.length,
-                          itemBuilder: (context, i) {
-                            return Container(
-                              margin: const EdgeInsets.only(
-                                left: 20,
-                                right: 20,
-                                top: 10,
-                                bottom: 10,
-                              ),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Color(0xFFfdfdfd),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 2,
-                                      offset: Offset(0, 0),
-                                      color: Colors.grey.withOpacity(0.2),
+                                          ],
+                                        )
+                                      ],
                                     ),
-                                  ],
-                                ),
-                                child: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        width: 80,
-                                        height: 100,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                              'assets/${popularmusic[i]["img"]}',
-                                            ),
-                                            fit: BoxFit.fill,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 10,),
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Icon(Icons.star,color: Colors.amberAccent,size: 24,),
-                                              SizedBox(width: 5,),
-                                              Text(popularmusic[i]["rating"],style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 18
-                                              ),)
-                                            ],
-                                          ),
-                                          Text(popularmusic[i]["title"],style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold
-                                          ),),
-                                          Text(popularmusic[i]["artist"],style: TextStyle(
-                                              fontSize: 14, color: Colors.grey
-                                          ),),
-                                          Container(
-                                            width: 40,
-                                            height: 15,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(10),
-                                              color: Color(0xFF00ace6),
-                                            ),
-                                            child:Text("Love",style: TextStyle(fontSize: 12,color: Colors.white),),
-                                            alignment: Alignment.center,
-                                          )
-
-
-                                        ],
-                                      )
-                                    ],
                                   ),
                                 ),
+
+
+
                               ),
                             );
                           },
                         ),
+
                       ],
                     ),
                   ),

@@ -33,6 +33,41 @@
     "title"  : "rage3",
     "img" : "img/amr.jpg",
     "audio" : "Voice5.mp3"
+  },
+  {
+    "rating": "5.0",
+    "artist" : "Shehab",
+    "title"  : "mrzmn",
+    "img" : "img/shehab.jpg",
+    "audio" : "shehab.mp3"
+  },
+  {
+    "rating": "5.0",
+    "artist" : "Shehab",
+    "title"  : "kkkk",
+    "img" : "img/shehab3.jpg",
+    "audio" : "kkkk.mp3"
+  },
+  {
+    "rating": "5.0",
+    "artist" : "Shehab",
+    "title"  : "Stamoni",
+    "img" : "img/shehab4.jpg",
+    "audio" : "satamoni.mp3"
+  },
+  {
+    "rating": "5.0",
+    "artist" : "Shehab",
+    "title"  : "Shehab El Ha2y2y",
+    "img" : "img/shehab5.jpg",
+    "audio" : "shehabElHa2y2y.mp3"
+  },
+  {
+    "rating": "5.0",
+    "artist" : "Shehab",
+    "title"  : "3al 3omom",
+    "img" : "img/shehab2.jpg",
+    "audio" : "3al3mom.mp3"
   }
 
 ]
