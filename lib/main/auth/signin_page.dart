@@ -14,12 +14,18 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
-  final _formSignInKey = GlobalKey<FormState>();
+  final formGlobalKey = GlobalKey<FormState>();
   bool rememberPassword = true;
+  final _passwordController = TextEditingController();
+  final _emailController = TextEditingController();
+
+
+
 
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      key: formGlobalKey,
       child: Column(
         children: [
           Center(
@@ -46,7 +52,7 @@ class _SigninPageState extends State<SigninPage> {
               ),
               child: SingleChildScrollView(
                 child: Form(
-                  key: _formSignInKey,
+                  key: formGlobalKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -58,6 +64,7 @@ class _SigninPageState extends State<SigninPage> {
                           color: Colors.black,
                         ),
                       ),
+                      SizedBox(height: 30,),
                       TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -65,6 +72,8 @@ class _SigninPageState extends State<SigninPage> {
                           }
                           return null;
                         },
+                        keyboardType: TextInputType.emailAddress,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: InputDecoration(
                           label: const Text("Email"),
                           hintText: 'Enter Email',
@@ -82,13 +91,18 @@ class _SigninPageState extends State<SigninPage> {
                       const SizedBox(height: 20),
                       TextFormField(
                         obscureText: true,
+                        keyboardType: TextInputType.visiblePassword,
                         obscuringCharacter: "*",
                         validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please Enter Password';
+                          if (value!.isEmpty) {
+                            return "Password must be Entered";
+                          } else if (value.length < 7) {
+                            return "Password must be at least 8 characters";
+                          } else {
+                            return null;
                           }
-                          return null;
                         },
+                       autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: InputDecoration(
                           label: const Text("Password"),
                           hintText: 'Enter Password',
@@ -125,14 +139,7 @@ class _SigninPageState extends State<SigninPage> {
                             ],
                           ),
                           GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ForgetPasswordPage(),
-                                ),
-                              );
-                            },
+                            onTap: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ForgetPasswordPage(),),);},
                             child: Text(
                               "Forget Password",
                               style: TextStyle(
@@ -148,28 +155,15 @@ class _SigninPageState extends State<SigninPage> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_formSignInKey.currentState!.validate() &&
-                                rememberPassword) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text("Processing Data"),
-                                ),
-                              );
-                            } else if (!rememberPassword) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text(
-                                    'Please Agree To Processing of Personal Data',
+                            if (formGlobalKey.currentState!.validate()){
+                              setState(() {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => AccountSetup(),
                                   ),
-                                ),
-                              );
-                            } else {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => AccountSetup(),
-                                ),
-                              );
+                                );
+                              });
                             }
                           },
                           child: const Text("Sign In"),
@@ -225,7 +219,7 @@ class _SigninPageState extends State<SigninPage> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterPage(),));
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const RegisterPage(),));
                             },
                             child: Text("Sign Up",
                               style: TextStyle(

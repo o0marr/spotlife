@@ -15,12 +15,16 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final _formSignInKey = GlobalKey<FormState>();
+  final formGlobalKey = GlobalKey<FormState>();
   bool rememberPassword = true;
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      key: formGlobalKey,
       child: Column(
         children: [
           Center(
@@ -47,7 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               child: SingleChildScrollView(
                 child: Form(
-                  key: _formSignInKey,
+                  key: formGlobalKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -59,6 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           color: Colors.black,
                         ),
                       ),
+                      SizedBox(height: 30,),
                       TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -66,10 +71,11 @@ class _RegisterPageState extends State<RegisterPage> {
                           }
                           return null;
                         },
+                        keyboardType: TextInputType.name,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: InputDecoration(
-                          label:  Text("User Name",style: TextStyle( color: Theme.of(context).colorScheme.secondary,
-                          ),),
-                          hintText: 'Enter The User Name',
+                          label: const Text("User Name"),
+                          hintText: 'Enter User Name',
                           hintStyle: const TextStyle(color: Colors.black26),
                           border: OutlineInputBorder(
                             borderSide: const BorderSide(color: Colors.black12),
@@ -81,9 +87,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                       ),
-
-                      const SizedBox(height: 20),
-
                       TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -91,9 +94,10 @@ class _RegisterPageState extends State<RegisterPage> {
                           }
                           return null;
                         },
+                        keyboardType: TextInputType.emailAddress,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: InputDecoration(
-                          label:  Text("Email",style: TextStyle(color: Theme.of(context).colorScheme.secondary,
-                          ),),
+                          label: const Text("Email"),
                           hintText: 'Enter Email',
                           hintStyle: const TextStyle(color: Colors.black26),
                           border: OutlineInputBorder(
@@ -107,9 +111,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                       const SizedBox(height: 20),
-
                       TextFormField(
                         obscureText: true,
+                        keyboardType: TextInputType.visiblePassword,
                         obscuringCharacter: "*",
                         validator: (value) {
                           if (value!.isEmpty) {
@@ -120,11 +124,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             return null;
                           }
                         },
-
-
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: InputDecoration(
-                          label:  Text("Password",style: TextStyle(color: Theme.of(context).colorScheme.secondary,
-                          ),),
+                          label: const Text("Password"),
                           hintText: 'Enter Password',
                           hintStyle: const TextStyle(color: Colors.black26),
                           border: OutlineInputBorder(
@@ -158,23 +160,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ],
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ForgetPasswordPage(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              "Forget Password",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.cyan,
-                              ),
-                            ),
-                          ),
+
                         ],
                       ),
                       const SizedBox(height: 60),
@@ -182,37 +168,22 @@ class _RegisterPageState extends State<RegisterPage> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_formSignInKey.currentState!.validate() &&
-                                rememberPassword) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text("Processing Data"),
-                                ),
-                              );
-                            } else if (!rememberPassword) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text(
-                                    'Please Agree To Processing of Personal Data',
+                            if (formGlobalKey.currentState!.validate()){
+                              setState(() {
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => AccountSetup(),
                                   ),
-                                ),
-                              );
-                            } else {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => AccountSetup(),
-                                ),
-                              );
+                                  (route) => false,
+                                );
+                              });
                             }
                           },
-                          child: Text("Sign Up",
-                          style: TextStyle(color: Theme.of(context).colorScheme.secondary,
-                          ),
-                          ),
+                          child: const Text("Sign Up"),
                         ),
                       ),
-                      const SizedBox(height: 40),
+                      const SizedBox(height: 60),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -228,7 +199,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               horizontal: 10,
                             ),
                             child: Text(
-                              "Or Sign up With",
+                              "Sign Up With",
                               style: TextStyle(color: Colors.black45),
                             ),
                           ),
@@ -248,9 +219,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           Logo(Logos.twitter),
                           Logo(Logos.google),
                           Logo(Logos.apple),
+
                         ],
-                      ),
-                      const SizedBox(height: 60),
+                      )
                     ],
                   ),
                 ),

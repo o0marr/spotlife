@@ -67,7 +67,7 @@ class WelcomeScreen extends StatelessWidget {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder:(context) => SigninPage(),));
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context) => SigninPage(),),(route) => false,);
 
                       },
                       child: Container(

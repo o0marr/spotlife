@@ -10,7 +10,11 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(title: Padding(
+      appBar: AppBar(
+        leading: IconButton(onPressed: () {
+         Navigator.pop(context);
+        },icon: Icon(Icons.arrow_back),),
+        title: Padding(
         padding: const EdgeInsets.only(left:65),
         child: Text("S E T T I N G S"),
       ),),

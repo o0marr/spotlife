@@ -63,7 +63,7 @@ class MyDrawer extends StatelessWidget {
               leading: const Icon(Icons.exit_to_app),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomeScreen(),));
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => WelcomeScreen(),),(route) => false,);
               },
 
             ),
