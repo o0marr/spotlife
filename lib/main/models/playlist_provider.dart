@@ -81,7 +81,91 @@ class PlaylistProvider extends ChangeNotifier {
       albumArtImagePath: "assets/img/hamaki.jpg",
       audioPath: "audio/hamaki.mp3",
     ),
+    //song 12
+    Song(
+      songName: "3agbha ",
+      artistName: "Ziad ZaZa",
+      albumArtImagePath: "assets/img/agbha.jpg",
+      audioPath: "audio/agbha.mp3",
+    ),
 
+    //song 13
+    Song(
+      songName: "Ana l2 Ana No",
+      artistName: "Hamo El Morshedy",
+      albumArtImagePath: "assets/img/anla.jfif",
+      audioPath: "audio/anala.mp3",
+    ),
+    //song 14
+    Song(
+      songName: "Ana Lebsi EL Sheek",
+      artistName: "Karim Cristiano",
+      albumArtImagePath: "assets/img/anleb.jfif",
+      audioPath: "audio/analb.mp3",
+    ),
+    //song 15
+    Song(
+      songName: "Be3tiny Leh ",
+      artistName: "Ziad ZaZa",
+      albumArtImagePath: "assets/img/b3teny.jpg",
+      audioPath: "audio/b3teni.mp3",
+    ),
+    //song 16
+    Song(
+      songName: "B5 B5 3w",
+      artistName: "Hamo El Morshedy",
+      albumArtImagePath: "assets/img/b5b5.jpg",
+      audioPath: "audio/b5b5.mp3",
+    ),
+    //song 17
+    Song(
+      songName: "Hal Di Kat Hayatak",
+      artistName: "Abyusif",
+      albumArtImagePath: "assets/img/haldd.jpg",
+      audioPath: "audio/hiadi.mp3",
+    ),
+    //song 18
+    Song(
+      songName: "Rzmn Y S7bi 4oia",
+      artistName: "Karim Cristiano",
+      albumArtImagePath: "assets/img/rzmn.jpg",
+      audioPath: "audio/rzmn.mp3",
+    ),
+    //song 19
+    Song(
+      songName: "Tb Taminini Lw 7ata b Rna",
+      artistName: "Karim Cristiano",
+      albumArtImagePath: "assets/img/tbtam.jfif",
+      audioPath: "audio/tbtmnini.mp3",
+    ),
+    //song 20
+    Song(
+      songName: "W4o4o Mfbrka",
+      artistName: "Eslam Kabonga",
+      albumArtImagePath: "assets/img/w4o4.jfif",
+      audioPath: "audio/w4o4.mp3",
+    ),
+    //song 21
+    Song(
+      songName: "Talata Zayha",
+      artistName: "Abyusif",
+      albumArtImagePath: "assets/img/talata.jpg",
+      audioPath: "audio/talata.mp3",
+    ),
+    //song 22
+    Song(
+      songName: "F3lkom Lsan",
+      artistName: "Houda Bondok",
+      albumArtImagePath: "assets/img/f3l.webp",
+      audioPath: "audio/f3l.mp3",
+    ),
+    //song 23
+    Song(
+      songName: "Nfs El W4o4",
+      artistName: "Houda Bondok",
+      albumArtImagePath: "assets/img/nfs.webp",
+      audioPath: "audio/mfs.mp3",
+    ),
   ];
   int? _currentSongIndex;
 
